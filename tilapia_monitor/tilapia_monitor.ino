@@ -5,6 +5,18 @@
 #include <Arduino.h>
 #include <DHT.h>
 
+
+/***************************************************************************
+            Sensor luminosidad PDVP8001 definiciones - variables
+***************************************************************************/
+
+float ldrSensor = A3;            // Sensor LDR conectado a A2
+float V0_ldr;                    // Tension detectada en el LDR
+float Vi_ldr = 5;                // Tensión suplida a R1 y LDR
+float R1_ldr = 1000;             // Resistencia R1 conectada entre Vi y LDR
+float R_ldr;
+float IntensidadLuminosa;
+
 /***************************************************************************
             Sensor temperatura dht22 definiciones - variables
 ***************************************************************************/
@@ -61,6 +73,37 @@ uint16_t ADC_Raw;
 uint16_t ADC_Voltage;
 uint16_t DO;
 uint16_t DissolvedOxygen;
+
+/***************************************************************************
+            Sensor luminosidad PDVP8001 funciones
+***************************************************************************/
+
+// Calcular intensidad  Intensidad luminosa
+float readldr(float ldrSensor){
+    float lux;
+    V0_ldr   = analogRead(ldrSensor)*(5.0 / 1023.0); // Calcula tensión en la resistencia Rt a traves de la entrada A0
+    R_ldr   = (V0_ldr*R1_ldr)/(Vi_ldr-V0_ldr);       // Determina valor de Rt
+    
+    if(R_ldr <= 300){
+        lux = 1000;        
+    }
+    else if(R_ldr > 300 && R_ldr < 1500){
+        lux = 50;
+    }
+    else if(R_ldr >= 1500 && R_ldr < 10000){
+        lux = 100;
+    }    
+    else if(R_ldr >= 10000 && R_ldr < 70000){
+        lux = 10;
+    }
+    else if(R_ldr >= 70000 && R_ldr < 600000){
+        lux = 1;
+    }
+    else if(R_ldr >= 600000){
+        lux = 0.1;
+    }
+    return lux;
+}
 
 /***************************************************************************
             Sensor oxigeno SEN0237 funciones
@@ -126,6 +169,7 @@ double avergearray(int* arr, int number){
 ***************************************************************************/
 void setup(void){
   Serial.begin(9600);
+  pinMode(ldrSensor, INPUT); // configura puerto sensor LDR PDVP8001
   dht.begin();               // Inicializa biblioteca DHT22
 }
 
@@ -133,6 +177,11 @@ void setup(void){
             LOOP
 ***************************************************************************/
 void loop(void){
+    
+  /*************************************************************************
+            Sensor luminosidad PDVP8001 loop 
+  *************************************************************************/  
+  IntensidadLuminosa = readldr(ldrSensor);
   
   /*************************************************************************
             Sensor temperatura dht22 loop 
@@ -167,6 +216,8 @@ void loop(void){
   // Cada 1000 milesegundos se imprime los valores registrados
   if(millis() - printTime > printInterval)
   {
+    // Sensor luminos PDVP8001
+    Serial.println("luminosidad\t" + String(IntensidadLuminosa) + "lux");  
     // Sensor temperatura
     Serial.println("Temperatura:\t" + String(temperaturadht22) + String(char(176)) + "C"); 
     Serial.println("Oxigeno:\t" + String(DissolvedOxygen) + "mg/L");

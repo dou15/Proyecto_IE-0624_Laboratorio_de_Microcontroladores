@@ -1,15 +1,47 @@
 <circuit type="simulide_1.0" rev="1007" stepSize="1000000" stepsPS="1000000" NLsteps="100000" animate="0" >
 
-<item itemtype="Subcircuit" CircId="Mega-1" mainComp="false" Show_id="true" Show_Val="false" Pos="-200,-252" rotation="0" hflip="1" vflip="1" label="Mega-1" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
-<mainCompProps itemtype="MCU" CircId="1_mega2560-63" mainComp="true" Show_id="false" Show_Val="false" Pos="20,20" rotation="0" hflip="1" vflip="1" label="1_mega2560-63" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Auto_Load="false" Rst_enabled="true" Ext_Osc="false" Wdt_enabled="false" />
+<item itemtype="Subcircuit" CircId="Mega-1" mainComp="false" Show_id="true" Show_Val="false" Pos="-200,-252" rotation="0" hflip="1" vflip="1" label="Mega-1" idLabPos="76.5384,-12.1032" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
+<mainCompProps itemtype="MCU" CircId="1_mega2560-63" mainComp="true" Show_id="false" Show_Val="false" Pos="20,20" rotation="0" hflip="1" vflip="1" label="1_mega2560-63" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="tilapia_monitor/tilapia_monitor.ino.mega.hex" Auto_Load="false" Rst_enabled="true" Ext_Osc="false" Wdt_enabled="false" />
 </item>
 
-<item itemtype="Voltage Source" CircId="Voltage Source-2" mainComp="false" ShowProp="MaxValue" Show_id="true" Show_Val="true" Pos="128,-68" rotation="180" hflip="1" vflip="1" label="SEN0237" idLabPos="21.0501,-29.0535" labelrot="-180" valLabPos="6.39931,41.3679" valLabRot="-180" Value_Volt="3.155 V" MaxValue="5 V" />
+<item itemtype="Voltage Source" CircId="Voltage Source-2" mainComp="false" ShowProp="MaxValue" Show_id="true" Show_Val="true" Pos="128,-68" rotation="180" hflip="1" vflip="1" label="SEN0237" idLabPos="21,-29" labelrot="-180" valLabPos="6,41" valLabRot="-180" Value_Volt="2.985 V" MaxValue="5 V" />
 
-<item itemtype="Voltage Source" CircId="Voltage Source-4" mainComp="false" ShowProp="MaxValue" Show_id="true" Show_Val="true" Pos="64,-68" rotation="180" hflip="1" vflip="1" label="sen0161" idLabPos="19.5344,-29.0535" labelrot="-180" valLabPos="10,44" valLabRot="-180" Value_Volt="0 V" MaxValue="5 V" />
+<item itemtype="Voltage Source" CircId="Voltage Source-4" mainComp="false" ShowProp="MaxValue" Show_id="true" Show_Val="true" Pos="64,-68" rotation="180" hflip="1" vflip="1" label="sen0161" idLabPos="19,-29" labelrot="-180" valLabPos="10,44" valLabRot="-180" Value_Volt="3.765 V" MaxValue="5 V" />
 
-<item itemtype="Connector" uid="Connector-6" startpinid="Voltage Source-4-outPin" endpinid="Mega-1-A0" pointList="36,-84,-48,-84" />
+<item itemtype="LDR" CircId="LDR-7" mainComp="false" Show_id="true" Show_Val="false" Pos="60,-180" rotation="0" hflip="1" vflip="1" label="LDR" idLabPos="-31,3" labelrot="0" valLabPos="-16,30" valLabRot="0" Lux="1000 Lux" Min_Lux="1e-12 Lux" Max_Lux="1000 Lux" Dial_Step="0 Lux" Gamma="0.8582" R1="200 kΩ" />
 
-<item itemtype="Connector" uid="Connector-7" startpinid="Voltage Source-2-outPin" endpinid="Mega-1-A1" pointList="100,-84,100,-116,36,-116,36,-92,-48,-92" />
+<item itemtype="Resistor" CircId="Resistor-8" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="116,-180" rotation="0" hflip="1" vflip="1" label="Resistor-8" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="1000 Ω" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-9" mainComp="false" ShowProp="Voltage" Show_id="false" Show_Val="true" Pos="164,-180" rotation="-180" hflip="1" vflip="1" label="Fixed Voltage-9" idLabPos="-64,-24" labelrot="0" valLabPos="6,-9" valLabRot="-180" Out="true" Voltage="5 V" />
+
+<item itemtype="Dht22" CircId="Dht22-27" mainComp="false" Show_id="false" Show_Val="false" Pos="144,-132" rotation="0" hflip="1" vflip="1" label="Dht22-27" idLabPos="-40,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" DHT22="DHT22" TempInc="0.5 C°" HumiInc="5 _%" />
+
+<item itemtype="SR04" CircId="SR04-44" mainComp="false" Show_id="false" Show_Val="false" Pos="-292,-28" rotation="270" hflip="1" vflip="1" label="SR04-44" idLabPos="-16,-48" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Voltage Source" CircId="Voltage Source-47" mainComp="false" ShowProp="MaxValue" Show_id="false" Show_Val="true" Pos="-352,52" rotation="0" hflip="1" vflip="1" label="Voltage Source-47" idLabPos="-32,-48" labelrot="0" valLabPos="-8,30" valLabRot="0" Value_Volt="0 V" MaxValue="5 V" />
+
+<item itemtype="Node" CircId="Node-35" mainComp="false" Pos="88,-180" />
+
+<item itemtype="Connector" uid="connector-36" startpinid="Voltage Source-4-outPin" endpinid="Mega-1-A0" pointList="36,-84,-48,-84" />
+
+<item itemtype="Connector" uid="connector-37" startpinid="Voltage Source-2-outPin" endpinid="Mega-1-A1" pointList="100,-84,100,-116,36,-116,36,-92,-48,-92" />
+
+<item itemtype="Connector" uid="connector-38" startpinid="Fixed Voltage-9-outnod" endpinid="Resistor-8-rPin" pointList="148,-180,132,-180" />
+
+<item itemtype="Connector" uid="connector-39" startpinid="Dht22-27-inPin" endpinid="Mega-1-A2" pointList="108,-136,28,-136,28,-100,-48,-100" />
+
+<item itemtype="Connector" uid="connector-40" startpinid="Resistor-8-lPin" endpinid="Node-35-0" pointList="100,-180,88,-180" />
+
+<item itemtype="Connector" uid="connector-41" startpinid="LDR-7-lPin" endpinid="Mega-1-GND1" pointList="44,-180,20,-180,20,-60,-48,-60" />
+
+<item itemtype="Connector" uid="connector-42" startpinid="Mega-1-A3" endpinid="Node-35-1" pointList="-48,-108,12,-108,12,-204,88,-204,88,-180" />
+
+<item itemtype="Connector" uid="connector-43" startpinid="Node-35-2" endpinid="LDR-7-rPin" pointList="88,-180,76,-180" />
+
+<item itemtype="Connector" uid="Connector-45" startpinid="SR04-44-trigpin" endpinid="Mega-1-12" pointList="-244,-28,-192,-28" />
+
+<item itemtype="Connector" uid="Connector-46" startpinid="SR04-44-outpin" endpinid="Mega-1-11" pointList="-244,-36,-192,-36" />
+
+<item itemtype="Connector" uid="Connector-48" startpinid="Voltage Source-47-outPin" endpinid="SR04-44-inpin" pointList="-324,68,-316,68,-316,60" />
 
 </circuit>
