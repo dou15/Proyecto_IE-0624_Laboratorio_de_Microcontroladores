@@ -18,6 +18,15 @@ float R_ldr;
 float IntensidadLuminosa;
 
 /***************************************************************************
+            Sensor nivel HC-SR04 definiciones - variables
+***************************************************************************/
+
+int triggerPin = 12;  // Trigger output
+int echoPin    = 11;  // Echo    input
+float tiempoRetorno;  // Tiempo retorna la señal del trigger al echo    
+float nivelAgua;      // Nivel de agua detectado
+
+/***************************************************************************
             Sensor temperatura dht22 definiciones - variables
 ***************************************************************************/
 
@@ -169,8 +178,10 @@ double avergearray(int* arr, int number){
 ***************************************************************************/
 void setup(void){
   Serial.begin(9600);
-  pinMode(ldrSensor, INPUT); // configura puerto sensor LDR PDVP8001
-  dht.begin();               // Inicializa biblioteca DHT22
+  pinMode(ldrSensor, INPUT);   // configura puerto sensor LDR PDVP8001
+  pinMode(triggerPin, OUTPUT); // configura HC-SR04
+  pinMode(echoPin, INPUT);
+  dht.begin();                 // Inicializa biblioteca DHT22
 }
 
 /***************************************************************************
@@ -182,6 +193,26 @@ void loop(void){
             Sensor luminosidad PDVP8001 loop 
   *************************************************************************/  
   IntensidadLuminosa = readldr(ldrSensor);
+  
+  /*************************************************************************
+            Sensor nivel HC-SR04 PDVP8001 loop 
+  *************************************************************************/
+  // El trigger dispara un pulso en alto por 10 microsegundos
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+ 
+  // echo recibe la señal de vuelta
+  pinMode(echoPin, INPUT);
+  // calcula tiempo retorno de la señal
+  tiempoRetorno = pulseIn(echoPin, HIGH);
+ 
+  // Determina el nivel del estanque en centimetros
+  // emplea principio
+  // distancia = tiempo * velocidad (velocidad del sonido 343 m/s = 0.0343 cm/uS)
+  nivelAgua = (tiempoRetorno/2) * 0.0343;
   
   /*************************************************************************
             Sensor temperatura dht22 loop 
@@ -218,6 +249,8 @@ void loop(void){
   {
     // Sensor luminos PDVP8001
     Serial.println("luminosidad\t" + String(IntensidadLuminosa) + "lux");  
+    // Sensor nivel SR-04
+    Serial.println("Nivel del agua " + String(nivelAgua) + "cm");
     // Sensor temperatura
     Serial.println("Temperatura:\t" + String(temperaturadht22) + String(char(176)) + "C"); 
     Serial.println("Oxigeno:\t" + String(DissolvedOxygen) + "mg/L");
