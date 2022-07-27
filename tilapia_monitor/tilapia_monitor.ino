@@ -4,6 +4,7 @@
 
 #include <Arduino.h>
 #include <DHT.h>
+#include <PCD8544.h>
 
 
 /***************************************************************************
@@ -84,6 +85,21 @@ uint16_t DO;
 uint16_t DissolvedOxygen;
 
 /***************************************************************************
+            Display PCD8544 definiciones - variables
+***************************************************************************/
+
+#define switchDisplay 8 // Switch encendido apagado pantalla
+PCD8544 lcd;
+// The dimensions of the LCD (in pixels)...
+static const byte LCD_WIDTH = 84;
+static const byte LCD_HEIGHT = 48;
+// A custom "degrees" symbol...
+static const byte DEGREES_CHAR = 1;
+static const byte degrees_glyph[] = { 0x00, 0x07, 0x05, 0x07, 0x00 };
+
+int switchDisplay_read;  // Almacena estado on/off pantalla
+
+/***************************************************************************
             Sensor luminosidad PDVP8001 funciones
 ***************************************************************************/
 
@@ -133,6 +149,8 @@ int16_t readDO(uint32_t voltage_mv, uint8_t temperature_c)
             Sensor pH SEN0161 funciones
 ***************************************************************************/
 
+float newpH;
+
 double avergearray(int* arr, int number){
   int i;
   int max,min;
@@ -174,6 +192,49 @@ double avergearray(int* arr, int number){
 }
 
 /***************************************************************************
+            Display PCD8544 funciones
+***************************************************************************/
+
+// Despliega datos en pantalla
+void displaylcd(){
+   switchDisplay_read = digitalRead(switchDisplay);
+ 
+    lcd.clear();
+
+    if(switchDisplay_read==HIGH){
+    lcd.setPower(1);  
+    // Imprime Luminosidad
+    lcd.setCursor(0, 0);
+    lcd.print("Lum ");
+    lcd.print(IntensidadLuminosa);
+    lcd.print(" lux");
+    // Imprime Nivel Agua
+    lcd.setCursor(0, 1);
+    lcd.print("N. Agua ");
+    lcd.print(nivelAgua);
+    lcd.print("cm");
+    // Imprime Temperatura
+    lcd.setCursor(0, 2);
+    lcd.print("Temp ");
+    lcd.print(temperaturadht22, 1);
+    lcd.print("\001C");            
+    // Imprime Concentración de oxigeno
+    lcd.setCursor(0, 3);
+    lcd.print("Oxi. ");
+    lcd.print(DissolvedOxygen);
+    lcd.print("mg/L");
+    // Imprime Concentración pH
+    lcd.setCursor(0, 4);
+    lcd.print("pH ");
+    lcd.print(newpH);
+    }
+    else{
+      lcd.setPower(0);
+    }        
+    delay(3000);
+} 
+
+/***************************************************************************
             SETUP
 ***************************************************************************/
 void setup(void){
@@ -182,6 +243,12 @@ void setup(void){
   pinMode(triggerPin, OUTPUT); // configura HC-SR04
   pinMode(echoPin, INPUT);
   dht.begin();                 // Inicializa biblioteca DHT22
+  // Configura pantalla     
+    pinMode(switchDisplay, INPUT);     
+    lcd.begin(LCD_WIDTH, LCD_HEIGHT);  
+    // Register the custom symbol...
+    lcd.createChar(DEGREES_CHAR, degrees_glyph);
+    lcd.clear();
 }
 
 /***************************************************************************
@@ -244,6 +311,14 @@ void loop(void){
       pHValue = 3.5*voltage+Offset;
       samplingTime=millis();
   }
+  
+  newpH = pHValue;
+  
+  /*************************************************************************
+            Display PCD8544 loop 
+  *************************************************************************/
+  displaylcd();
+  
   // Cada 1000 milesegundos se imprime los valores registrados
   if(millis() - printTime > printInterval)
   {
@@ -259,4 +334,5 @@ void loop(void){
     Serial.println();
         printTime=millis();
   }
+  
 }
