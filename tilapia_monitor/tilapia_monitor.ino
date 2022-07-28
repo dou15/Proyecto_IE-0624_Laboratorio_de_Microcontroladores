@@ -5,7 +5,7 @@
 #include <Arduino.h>
 #include <DHT.h>
 #include <PCD8544.h>
-
+#include <Servo.h>
 
 /***************************************************************************
             Sensor luminosidad PDVP8001 definiciones - variables
@@ -100,6 +100,18 @@ static const byte degrees_glyph[] = { 0x00, 0x07, 0x05, 0x07, 0x00 };
 int switchDisplay_read;  // Almacena estado on/off pantalla
 
 /***************************************************************************
+            Servo alimentador definiciones - variables
+***************************************************************************/
+
+int servoPin = 9; // aqui es donde esta conectado el servo.
+int servoPos = 90; // donde empieza la posicion del servo.
+int servoPos2 = 180; // posicion de alimentacion
+int servoposicion;
+
+// nombre del servo de mi alimentador automatico.
+Servo myServo1; 
+
+/***************************************************************************
             Sensor luminosidad PDVP8001 funciones
 ***************************************************************************/
 
@@ -191,6 +203,7 @@ double avergearray(int* arr, int number){
   return avg;
 }
 
+
 /***************************************************************************
             Display PCD8544 funciones
 ***************************************************************************/
@@ -227,6 +240,14 @@ void displaylcd(){
     lcd.setCursor(0, 4);
     lcd.print("pH ");
     lcd.print(newpH);
+      if(servoposicion==servoPos){
+          lcd.setCursor(0, 5);    
+          lcd.print("No alimenta");
+      }
+      else{
+        lcd.setCursor(0, 5);
+        lcd.print("Alimenta");    
+      }  
     }
     else{
       lcd.setPower(0);
@@ -243,6 +264,8 @@ void setup(void){
   pinMode(triggerPin, OUTPUT); // configura HC-SR04
   pinMode(echoPin, INPUT);
   dht.begin();                 // Inicializa biblioteca DHT22
+  // haciendo el attach de mi servo motor al pin 9 que esta en la variable servoPin.
+  myServo1.attach(servoPin); 
   // Configura pantalla     
     pinMode(switchDisplay, INPUT);     
     lcd.begin(LCD_WIDTH, LCD_HEIGHT);  
@@ -290,7 +313,7 @@ void loop(void){
   temperaturadht22 = dht.readTemperature();  
     
   /*************************************************************************
-            Sensor pH SEN0237 loop 
+            Sensor oxigeno SEN0237 loop 
   *************************************************************************/
   Temperaturet = (uint8_t)READ_TEMP;
   ADC_Raw = analogRead(DO_PIN);
@@ -315,24 +338,20 @@ void loop(void){
   newpH = pHValue;
   
   /*************************************************************************
-            Display PCD8544 loop 
-  *************************************************************************/
-  displaylcd();
-  
-  // Cada 1000 milesegundos se imprime los valores registrados
-  if(millis() - printTime > printInterval)
-  {
-    // Sensor luminos PDVP8001
-    Serial.println("luminosidad\t" + String(IntensidadLuminosa) + "lux");  
-    // Sensor nivel SR-04
-    Serial.println("Nivel del agua " + String(nivelAgua) + "cm");
-    // Sensor temperatura
-    Serial.println("Temperatura:\t" + String(temperaturadht22) + String(char(176)) + "C"); 
-    Serial.println("Oxigeno:\t" + String(DissolvedOxygen) + "mg/L");
-    // Sensor pH
-    Serial.println("pH value:\t" + String(pHValue));
-    Serial.println();
-        printTime=millis();
-  }
-  
+            Servo loop 
+  *************************************************************************/ 
+  myServo1.write(servoPos);
+  servoposicion = servoPos;
+    displaylcd();
+    Serial.println("luminosidad: " + String(IntensidadLuminosa) + " ,NA: " + String(nivelAgua) + " ,Temperatura: " + String(temperaturadht22) + " ,Oxigeno: " + String(DissolvedOxygen) + " ,pH: " + String(pHValue) + " ,alim. " + "noalimenta");
+  delay(10000);  // 1 minuto en milisegundos
+  myServo1.write(servoPos2);
+  servoposicion = servoPos2;
+    displaylcd();   
+    Serial.println("luminosidad: " + String(IntensidadLuminosa) + " ,NA: " + String(nivelAgua) + " ,Temperatura: " + String(temperaturadht22) + " ,Oxigeno: " + String(DissolvedOxygen) + " ,pH: " + String(pHValue) + " ,alim. " + "alimenta");
+  delay(5000);  // 5 segundos en milisegundos
+  myServo1.write(servoPos);
+    displaylcd();
+    Serial.println("luminosidad: " + String(IntensidadLuminosa) + " ,NA: " + String(nivelAgua) + " ,Temperatura: " + String(temperaturadht22) + " ,Oxigeno: " + String(DissolvedOxygen) + " ,pH: " + String(pHValue) + " ,alim. " + "noalimenta");
+   
 }

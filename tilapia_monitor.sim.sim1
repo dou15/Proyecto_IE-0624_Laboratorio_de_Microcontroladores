@@ -6,7 +6,7 @@
 
 <item itemtype="Voltage Source" CircId="Voltage Source-2" mainComp="false" ShowProp="MaxValue" Show_id="true" Show_Val="true" Pos="128,-68" rotation="180" hflip="1" vflip="1" label="SEN0237" idLabPos="21,-29" labelrot="-180" valLabPos="6,41" valLabRot="-180" Value_Volt="2.985 V" MaxValue="5 V" />
 
-<item itemtype="Voltage Source" CircId="Voltage Source-4" mainComp="false" ShowProp="MaxValue" Show_id="true" Show_Val="true" Pos="64,-68" rotation="180" hflip="1" vflip="1" label="sen0161" idLabPos="19,-29" labelrot="-180" valLabPos="10,44" valLabRot="-180" Value_Volt="3.765 V" MaxValue="5 V" />
+<item itemtype="Voltage Source" CircId="Voltage Source-4" mainComp="false" ShowProp="MaxValue" Show_id="true" Show_Val="true" Pos="64,-68" rotation="180" hflip="1" vflip="1" label="sen0161" idLabPos="19,-29" labelrot="-180" valLabPos="10,44" valLabRot="-180" Value_Volt="2.135 V" MaxValue="5 V" />
 
 <item itemtype="LDR" CircId="LDR-7" mainComp="false" Show_id="true" Show_Val="false" Pos="60,-180" rotation="0" hflip="1" vflip="1" label="LDR" idLabPos="-31,3" labelrot="0" valLabPos="-16,30" valLabRot="0" Lux="1000 Lux" Min_Lux="1e-12 Lux" Max_Lux="1000 Lux" Dial_Step="0 Lux" Gamma="0.8582" R1="200 kΩ" />
 
@@ -18,7 +18,7 @@
 
 <item itemtype="SR04" CircId="SR04-44" mainComp="false" Show_id="false" Show_Val="false" Pos="-288,72" rotation="180" hflip="1" vflip="1" label="SR04-44" idLabPos="-16,-48" labelrot="0" valLabPos="-16,20" valLabRot="0" />
 
-<item itemtype="Voltage Source" CircId="Voltage Source-47" mainComp="false" ShowProp="MaxValue" Show_id="false" Show_Val="true" Pos="-216,132" rotation="-90" hflip="1" vflip="1" label="Voltage Source-47" idLabPos="-32,-48" labelrot="0" valLabPos="-8,30" valLabRot="0" Value_Volt="0 V" MaxValue="5 V" />
+<item itemtype="Voltage Source" CircId="Voltage Source-47" mainComp="false" ShowProp="MaxValue" Show_id="false" Show_Val="true" Pos="-216,132" rotation="-90" hflip="1" vflip="1" label="Voltage Source-47" idLabPos="-32,-48" labelrot="0" valLabPos="-8,30" valLabRot="0" Value_Volt="1.645 V" MaxValue="5 V" />
 
 <item itemtype="Switch" CircId="Switch-60" mainComp="false" Show_id="false" Show_Val="false" Pos="-432,-28" rotation="90" hflip="1" vflip="1" label="Switch-60" idLabPos="-12,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" DT="false" Poles="1 _Poles" />
 
@@ -42,62 +42,80 @@
 
 <item itemtype="Resistor" CircId="Resistor-111" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-404,-60" rotation="0" hflip="1" vflip="1" label="Resistor-111" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="250 Ω" />
 
+<item itemtype="Servo" CircId="Servo-118" mainComp="false" Show_id="true" Show_Val="false" Pos="-468,68" rotation="180" hflip="1" vflip="1" label="Servo-118" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Speed="0.2 _sec/60º" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1e+9 Ω" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-119" mainComp="false" ShowProp="Voltage" Show_id="false" Show_Val="true" Pos="-412,120" rotation="-90" hflip="1" vflip="1" label="Fixed Voltage-119" idLabPos="-64,-24" labelrot="0" valLabPos="-34,-6" valLabRot="90" Out="true" Voltage="5 V" />
+
+<item itemtype="Ground" CircId="Ground-125" mainComp="false" Show_id="false" Show_Val="false" Pos="-384,136" rotation="0" hflip="1" vflip="1" label="Ground-125" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="SerialPort" CircId="SerialPort-127" mainComp="false" Show_id="false" Show_Val="false" Pos="-240,-248" rotation="-90" hflip="1" vflip="1" label="SerialPort-127" idLabPos="-34,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Port="/tmp/ttyS0" Baudrate="9600 _Bauds" DataBits="8 _Bits" StopBits="1 _Bits" />
+
 <item itemtype="Node" CircId="Node-35" mainComp="false" Pos="88,-180" />
 
 <item itemtype="Node" CircId="Node-113" mainComp="false" Pos="-432,-60" />
 
-<item itemtype="Connector" uid="connector-88" startpinid="Voltage Source-4-outPin" endpinid="Mega-1-A0" pointList="36,-84,-48,-84" />
+<item itemtype="Connector" uid="connector-128" startpinid="Voltage Source-4-outPin" endpinid="Mega-1-A0" pointList="36,-84,-48,-84" />
 
-<item itemtype="Connector" uid="connector-89" startpinid="Voltage Source-2-outPin" endpinid="Mega-1-A1" pointList="100,-84,100,-116,36,-116,36,-92,-48,-92" />
+<item itemtype="Connector" uid="connector-129" startpinid="Voltage Source-2-outPin" endpinid="Mega-1-A1" pointList="100,-84,100,-116,36,-116,36,-92,-48,-92" />
 
-<item itemtype="Connector" uid="connector-90" startpinid="Fixed Voltage-9-outnod" endpinid="Resistor-8-rPin" pointList="148,-180,132,-180" />
+<item itemtype="Connector" uid="connector-130" startpinid="Fixed Voltage-9-outnod" endpinid="Resistor-8-rPin" pointList="148,-180,132,-180" />
 
-<item itemtype="Connector" uid="connector-91" startpinid="Dht22-27-inPin" endpinid="Mega-1-A2" pointList="108,-136,28,-136,28,-100,-48,-100" />
+<item itemtype="Connector" uid="connector-131" startpinid="Dht22-27-inPin" endpinid="Mega-1-A2" pointList="108,-136,28,-136,28,-100,-48,-100" />
 
-<item itemtype="Connector" uid="connector-92" startpinid="Resistor-8-lPin" endpinid="Node-35-0" pointList="100,-180,88,-180" />
+<item itemtype="Connector" uid="connector-132" startpinid="Resistor-8-lPin" endpinid="Node-35-0" pointList="100,-180,88,-180" />
 
-<item itemtype="Connector" uid="connector-93" startpinid="LDR-7-lPin" endpinid="Mega-1-GND1" pointList="44,-180,20,-180,20,-60,-48,-60" />
+<item itemtype="Connector" uid="connector-133" startpinid="LDR-7-lPin" endpinid="Mega-1-GND1" pointList="44,-180,20,-180,20,-60,-48,-60" />
 
-<item itemtype="Connector" uid="connector-94" startpinid="Mega-1-A3" endpinid="Node-35-1" pointList="-48,-108,12,-108,12,-204,88,-204,88,-180" />
+<item itemtype="Connector" uid="connector-134" startpinid="Mega-1-A3" endpinid="Node-35-1" pointList="-48,-108,12,-108,12,-204,88,-204,88,-180" />
 
-<item itemtype="Connector" uid="connector-95" startpinid="Node-35-2" endpinid="LDR-7-rPin" pointList="88,-180,76,-180" />
+<item itemtype="Connector" uid="connector-135" startpinid="Node-35-2" endpinid="LDR-7-rPin" pointList="88,-180,76,-180" />
 
-<item itemtype="Connector" uid="connector-96" startpinid="Voltage Source-47-outPin" endpinid="SR04-44-inpin" pointList="-200,104,-200,96" />
+<item itemtype="Connector" uid="connector-136" startpinid="Voltage Source-47-outPin" endpinid="SR04-44-inpin" pointList="-200,104,-200,96" />
 
-<item itemtype="Connector" uid="connector-97" startpinid="Ground-61-Gnd" endpinid="Switch-60-switch0pinN" pointList="-432,0,-432,-12" />
+<item itemtype="Connector" uid="connector-137" startpinid="Ground-61-Gnd" endpinid="Switch-60-switch0pinN" pointList="-432,0,-432,-12" />
 
-<item itemtype="Connector" uid="connector-98" startpinid="Resistor-65-lPin" endpinid="Fixed Voltage-64-outnod" pointList="-432,-100,-432,-108" />
+<item itemtype="Connector" uid="connector-138" startpinid="Resistor-65-lPin" endpinid="Fixed Voltage-64-outnod" pointList="-432,-100,-432,-108" />
 
-<item itemtype="Connector" uid="connector-99" startpinid="Switch-60-pinP0" endpinid="Node-113-0" pointList="-432,-44,-432,-60" />
+<item itemtype="Connector" uid="connector-139" startpinid="Switch-60-pinP0" endpinid="Node-113-0" pointList="-432,-44,-432,-60" />
 
-<item itemtype="Connector" uid="connector-100" startpinid="Resistor-87-rPin" endpinid="Pcd8544-68-PinScl" pointList="-284,-180,-284,-188,-300,-188" />
+<item itemtype="Connector" uid="connector-140" startpinid="Resistor-87-rPin" endpinid="Pcd8544-68-PinScl" pointList="-284,-180,-284,-188,-300,-188" />
 
-<item itemtype="Connector" uid="connector-101" startpinid="Resistor-87-lPin" endpinid="Mega-1-3" pointList="-284,-148,-284,-108,-192,-108" />
+<item itemtype="Connector" uid="connector-141" startpinid="Resistor-87-lPin" endpinid="Mega-1-3" pointList="-284,-148,-284,-108,-192,-108" />
 
-<item itemtype="Connector" uid="connector-102" startpinid="Resistor-86-rPin" endpinid="Pcd8544-68-PinSi" pointList="-308,-180,-308,-188,-316,-188" />
+<item itemtype="Connector" uid="connector-142" startpinid="Resistor-86-rPin" endpinid="Pcd8544-68-PinSi" pointList="-308,-180,-308,-188,-316,-188" />
 
-<item itemtype="Connector" uid="connector-103" startpinid="Resistor-84-lPin" endpinid="Pcd8544-68-PinDc" pointList="-332,-180,-332,-188" />
+<item itemtype="Connector" uid="connector-143" startpinid="Resistor-84-lPin" endpinid="Pcd8544-68-PinDc" pointList="-332,-180,-332,-188" />
 
-<item itemtype="Connector" uid="connector-104" startpinid="Resistor-86-lPin" endpinid="Mega-1-4" pointList="-308,-148,-292,-148,-292,-100,-192,-100" />
+<item itemtype="Connector" uid="connector-144" startpinid="Resistor-86-lPin" endpinid="Mega-1-4" pointList="-308,-148,-292,-148,-292,-100,-192,-100" />
 
-<item itemtype="Connector" uid="connector-105" startpinid="Resistor-84-rPin" endpinid="Mega-1-5" pointList="-332,-148,-332,-140,-300,-140,-300,-92,-192,-92" />
+<item itemtype="Connector" uid="connector-145" startpinid="Resistor-84-rPin" endpinid="Mega-1-5" pointList="-332,-148,-332,-140,-300,-140,-300,-92,-192,-92" />
 
-<item itemtype="Connector" uid="connector-106" startpinid="Resistor-85-rPin" endpinid="Pcd8544-68-PinCs" pointList="-356,-172,-356,-180,-348,-180,-348,-188" />
+<item itemtype="Connector" uid="connector-146" startpinid="Resistor-85-rPin" endpinid="Pcd8544-68-PinCs" pointList="-356,-172,-356,-180,-348,-180,-348,-188" />
 
-<item itemtype="Connector" uid="connector-107" startpinid="Resistor-85-lPin" endpinid="Mega-1-7" pointList="-356,-140,-356,-132,-308,-132,-308,-76,-192,-76" />
+<item itemtype="Connector" uid="connector-147" startpinid="Resistor-85-lPin" endpinid="Mega-1-7" pointList="-356,-140,-356,-132,-308,-132,-308,-76,-192,-76" />
 
-<item itemtype="Connector" uid="connector-108" startpinid="Resistor-83-rPin" endpinid="Pcd8544-68-PinRst" pointList="-380,-172,-380,-180,-364,-180,-364,-188" />
+<item itemtype="Connector" uid="connector-148" startpinid="Resistor-83-rPin" endpinid="Pcd8544-68-PinRst" pointList="-380,-172,-380,-180,-364,-180,-364,-188" />
 
-<item itemtype="Connector" uid="connector-109" startpinid="Resistor-83-lPin" endpinid="Mega-1-6" pointList="-380,-140,-380,-124,-316,-124,-316,-84,-192,-84" />
+<item itemtype="Connector" uid="connector-149" startpinid="Resistor-83-lPin" endpinid="Mega-1-6" pointList="-380,-140,-380,-124,-316,-124,-316,-84,-192,-84" />
 
-<item itemtype="Connector" uid="Connector-112" startpinid="Resistor-111-lPin" endpinid="Node-113-1" pointList="-420,-60,-432,-60" />
+<item itemtype="Connector" uid="connector-150" startpinid="Resistor-111-lPin" endpinid="Node-113-1" pointList="-420,-60,-432,-60" />
 
-<item itemtype="Connector" uid="Connector-114" startpinid="Node-113-2" endpinid="Resistor-65-rPin" pointList="-432,-60,-432,-68" />
+<item itemtype="Connector" uid="connector-151" startpinid="Node-113-2" endpinid="Resistor-65-rPin" pointList="-432,-60,-432,-68" />
 
-<item itemtype="Connector" uid="Connector-115" startpinid="Mega-1-8" endpinid="Resistor-111-rPin" pointList="-192,-60,-388,-60" />
+<item itemtype="Connector" uid="connector-152" startpinid="Mega-1-8" endpinid="Resistor-111-rPin" pointList="-192,-60,-388,-60" />
 
-<item itemtype="Connector" uid="Connector-116" startpinid="SR04-44-outpin" endpinid="Mega-1-11" pointList="-296,24,-296,-36,-192,-36" />
+<item itemtype="Connector" uid="connector-153" startpinid="SR04-44-outpin" endpinid="Mega-1-11" pointList="-296,24,-296,-36,-192,-36" />
 
-<item itemtype="Connector" uid="Connector-117" startpinid="SR04-44-trigpin" endpinid="Mega-1-12" pointList="-288,24,-288,-28,-192,-28" />
+<item itemtype="Connector" uid="connector-154" startpinid="SR04-44-trigpin" endpinid="Mega-1-12" pointList="-288,24,-288,-28,-192,-28" />
+
+<item itemtype="Connector" uid="connector-155" startpinid="Servo-118-in2" endpinid="Mega-1-9" pointList="-420,52,-384,52,-384,12,-304,12,-304,-52,-192,-52" />
+
+<item itemtype="Connector" uid="connector-156" startpinid="Fixed Voltage-119-outnod" endpinid="Servo-118-in0" pointList="-412,104,-412,84,-420,84" />
+
+<item itemtype="Connector" uid="connector-157" startpinid="Ground-125-Gnd" endpinid="Servo-118-in1" pointList="-384,120,-384,108,-400,108,-400,68,-420,68" />
+
+<item itemtype="Connector" uid="Connector-160" startpinid="SerialPort-127-pin1" endpinid="Mega-1-1" pointList="-232,-208,-232,-124,-192,-124" />
+
+<item itemtype="Connector" uid="Connector-161" startpinid="Mega-1-0" endpinid="SerialPort-127-pin0" pointList="-192,-132,-248,-132,-248,-208" />
 
 </circuit>
