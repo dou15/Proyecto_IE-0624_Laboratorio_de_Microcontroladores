@@ -17,7 +17,9 @@ Instrucciones:
     
     Se debe encender la comunicación serial en el circuito de simulación
     
-    Correr la simulación
+    Correr la simulación en el simuladorIDE, se debe cargar el firmware del programa .hex al arduino para Ejecutarla simulación.
     
     Los datos seran registrados en la pantalla del simulador, visualizados en el monitor serial
     del Arduino Mega, y mostrados en los paneles del thingsboard.
+    
+    El sitio de thingsboard con los paneles de visualización de datos se encuntra en el sitio iot.eie.ucr.ac.cr
